@@ -1,29 +1,12 @@
-[![PyPI version](https://badge.fury.io/py/template_pypi.svg)](https://badge.fury.io/py/template_pypi)
+[![PyPI version](https://badge.fury.io/py/flexion.svg)](https://badge.fury.io/py/flexion)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4284804.svg)](https://doi.org/10.5281/zenodo.4284804)
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/myorg/template_pypi/master?urlpath=lab)
-[![Gitpod - Code Now](https://img.shields.io/badge/Gitpod-code%20now-blue.svg?longCache=true)](https://gitpod.io#https://github.com/myorg/template_pypi)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/myorg/template_pypi.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/myorg/template_pypi/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/myorg/template_pypi.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/myorg/template_pypi/context:python)
-[![template_pypi](https://snyk.io/advisor/python/template_pypi/badge.svg)](https://snyk.io/advisor/python/template_pypi)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ulf/flexion/master?urlpath=lab)
+[![Gitpod - Code Now](https://img.shields.io/badge/Gitpod-code%20now-blue.svg?longCache=true)](https://gitpod.io#https://github.com/ulf/flexion)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/ulf/flexion.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ulf/flexion/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/ulf/flexion.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ulf/flexion/context:python)
 
-# template_pypi
-
-## DELETE THIS LATER 
-Download template_pypi and rename it
-
-```
-git clone git@github.com:kmedian/template_pypi.git mycoolpkg
-cd mycoolpkg
-bash rename.sh "myorg" "mycoolpkg" "Real Name"
-```
-
-Reinitialize the repo:
-
-```
-rm -rf .git
-git init
-git remote add origin git@github.com:myorg/mycoolpkg.git
-```
+# flexion
+Applying declination and conjugation rules to lemmata.
 
 
 ## Usage
@@ -39,11 +22,11 @@ Table of Contents
 ## Appendix
 
 ### Installation
-The `template_pypi` [git repo](http://github.com/myorg/template_pypi) is available as [PyPi package](https://pypi.org/project/template_pypi)
+The `flexion` [git repo](http://github.com/ulf/flexion) is available as [PyPi package](https://pypi.org/project/flexion)
 
 ```sh
-pip install template_pypi
-pip install git+ssh://git@github.com/myorg/template_pypi.git
+pip install flexion
+pip install git+ssh://git@github.com/ulf/flexion.git
 ```
 
 ### Install a virtual environment
@@ -84,8 +67,8 @@ rm -r .venv
 
 
 ### Support
-Please [open an issue](https://github.com/myorg/template_pypi/issues/new) for support.
+Please [open an issue](https://github.com/ulf/flexion/issues/new) for support.
 
 
 ### Contributing
-Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/myorg/template_pypi/compare/).
+Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/ulf/flexion/compare/).
