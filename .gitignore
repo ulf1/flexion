@@ -108,3 +108,6 @@ venv.bak/
 .vscode
 profile/data*
 .theia
+
+demo/Untitled*ipynb
+demo/de_hdt-ud-dev.conllu

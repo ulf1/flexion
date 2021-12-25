@@ -11,28 +11,31 @@ Applying declination and conjugation rules to lemmata.
 
 ## Usage
 
-Table of Contents
-
-* [Use Case 1](#use-case-1)
-
-
-### Use Case 1
 
 
 ## Appendix
 
-### Installation
+### Installation in another project
 The `flexion` [git repo](http://github.com/ulf/flexion) is available as [PyPi package](https://pypi.org/project/flexion)
 
 ```sh
 pip install flexion
-pip install git+ssh://git@github.com/ulf/flexion.git
+```
+
+Download a Transducer model
+```
+python scripts/download_transducer.py --model=smor
+```
+
+Download demo data
+```
+wget -O demo/de_hdt-ud-dev.conllu https://raw.githubusercontent.com/UniversalDependencies/UD_German-HDT/master/de_hdt-ud-dev.conllu 
 ```
 
 ### Install a virtual environment
 
 ```sh
-python3.6 -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt --no-cache-dir
