@@ -13,9 +13,14 @@ def test1():
 def test2():
     posfeats = {"upos": "ADJ", "Degree": "Pos"}
     smortags = flexion.conllu_to_smor(posfeats)
-    for sm in smortags:
-        assert sm == [
+    assert len(smortags) == 4
+    for sm, _ in smortags.items():
+        assert sm in [
             "<+ADJ><Pos>",
             "<+ADJ><Pos><Adv>",
             "<+ADJ><Pos><Invar>",
             "<+ADJ><Pos><Pred>"]
+
+def test3():
+    posfeats = {'upos': 'NOUN', 'Case': 'Dat', 'Gender': 'Neut', 'Number': 'Plur', 'Person': '3'}
+    smortags = flexion.conllu_to_smor(posfeats)

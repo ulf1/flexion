@@ -5601,13 +5601,22 @@ def conllu_to_smor(posfeats: dict) -> List[str]:
     assert smortags == ["<+ADJ><Pos>", "<+ADJ><Pos><Adv>"]
     """
     n_keys = len(posfeats)
-    smortags = []
+    smortags = {}
     for sm, cd in db_smor_conllu.items():
-        if len(cd) == n_keys:
-            matches = [cd.get(k) in v.split(",") for k, v in posfeats.items()]
-            if all(matches):
-                smortags.append(sm)
+        matches = [v in posfeats.get(k, "").split(",")
+                  for k, v in cd.items()]
+        if all(matches):
+            smortags[sm] = sum(matches) / n_keys
     return smortags
+
+
+def get_best_smortag(smortags):
+    bestpct = 0.0
+    best = None
+    for sm, pct in smortags.items():
+        if pct > bestpct:
+            best, bestpct = sm, pct
+    return best
 
 
 def match_smor_and_conllu(token: dict, analysis: List[str]) -> List[str]:
@@ -5634,7 +5643,7 @@ def match_smor_and_conllu(token: dict, analysis: List[str]) -> List[str]:
         idx = s.find('<+')
         if idx >= 0:
             # check which SMOR analysis matches the Conll-U features
-            if s[idx:] in implied_smortags:
+            if s[idx:] in implied_smortags.keys():
                 smortags.append(s)
     # done
     return smortags
