@@ -26,6 +26,7 @@ def replace(lemma: str, substitute: str, tokenlist: List[dict]) -> List[str]:
             # print(i, t['smortags'])
         tokens2.append(t)
 
+    # 
     # abort
     if len(indicies) == 0:
         return []
@@ -61,12 +62,19 @@ def replace(lemma: str, substitute: str, tokenlist: List[dict]) -> List[str]:
 def generate_strings(tokens) -> List[str]:
     """ generate sentence strings """
     sent = [""]
+    nextws = True
     for t in tokens:
         # check id
         if not isinstance(t.get('id'), (int, str)):
             continue
         # whitespace
-        if t.get("upos") != "PUNCT":
+        ws = True
+        if not nextws:
+            ws = False
+        if t.get("form") in [
+            ",", ".", "!", "?", ":", ";", '“', '‘', "(", "[", "{"]:
+            ws = False
+        if ws:
             for i in range(len(sent)):
                 sent[i] += " "
         # add words
@@ -81,6 +89,10 @@ def generate_strings(tokens) -> List[str]:
         else:
             for i in range(len(sent)):
                 sent[i] += t.get("form")
+        # skip next whitspace
+        nextws = True
+        if t.get("form") in ['„', '‚', ")", "]", "}"]:
+            nextws = False
     # strip
     sent = [s.strip() for s in sent]
 
