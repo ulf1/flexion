@@ -8,6 +8,8 @@
 # flexion
 Applying declination and conjugation rules to lemmata.
 
+## Warning
+Software is **not** production ready and requires more unit testing.
 
 ## Installation in another project
 The `flexion` [git repo](http://github.com/ulf/flexion) is available as [PyPi package](https://pypi.org/project/flexion)
