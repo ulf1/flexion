@@ -21,6 +21,11 @@ def test2():
             "<+ADJ><Pos><Invar>",
             "<+ADJ><Pos><Pred>"]
 
+
 def test3():
-    posfeats = {'upos': 'NOUN', 'Case': 'Dat', 'Gender': 'Neut', 'Number': 'Plur', 'Person': '3'}
+    posfeats = {'upos': 'NOUN', 'Case': 'Dat', 'Gender': 'Neut',
+                'Number': 'Plur', 'Person': '3'}
     smortags = flexion.conllu_to_smor(posfeats)
+    assert len(smortags) == 2
+    assert smortags['<+NN><Neut><Dat><Pl>'] == 0.8
+    assert smortags['<+NN><NoGend><Dat><Pl>'] == 0.6

@@ -39,4 +39,3 @@ def test2():
     assert len(sents) == 1
     assert sents[0] in (
         '" Diesen Spekulationen liegt eine unseriöse Recherche zugrunde.')
-

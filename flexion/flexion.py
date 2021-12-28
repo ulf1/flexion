@@ -40,7 +40,7 @@ def replace(lemma: str, substitute: str, tokenlist: List[dict]) -> List[str]:
             count[matches[-1]] += 1
     genus = '<Neut>' if count['<Neut>'] >= count['<Fem>'] else '<Fem>'
     genus = '<Masc>' if count['<Masc>'] > count[genus] else genus
-    print(substitute, genus)
+    # print(substitute, genus)
 
     # generate form with SMOR for substitute lemma and overwrite `'form'` field
     for tid in indicies:

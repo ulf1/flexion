@@ -5604,7 +5604,7 @@ def conllu_to_smor(posfeats: dict) -> List[str]:
     smortags = {}
     for sm, cd in db_smor_conllu.items():
         matches = [v in posfeats.get(k, "").split(",")
-                  for k, v in cd.items()]
+                   for k, v in cd.items()]
         if all(matches):
             smortags[sm] = sum(matches) / n_keys
     return smortags
