@@ -4,7 +4,7 @@ import conllu
 import copy
 
 # read conllu file
-iowrapper = io.open("demo/de_hdt-ud-dev.conllu", "r", encoding="utf-8")
+iowrapper = io.open("tmp/de_hdt-ud-dev.conllu", "r", encoding="utf-8")
 dat = []
 i = 0
 for s in conllu.parse_incr(iowrapper):

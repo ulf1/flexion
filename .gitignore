@@ -109,5 +109,4 @@ venv.bak/
 profile/data*
 .theia
 
-demo/Untitled*ipynb
-demo/de_hdt-ud-dev.conllu
+tmp

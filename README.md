@@ -27,9 +27,10 @@ Download a Transducer model
 python scripts/download_transducer.py --model=smor
 ```
 
-Download demo data
+Download demo data for unit tests
 ```
-wget -O demo/de_hdt-ud-dev.conllu https://raw.githubusercontent.com/UniversalDependencies/UD_German-HDT/master/de_hdt-ud-dev.conllu 
+mkdir tmp
+wget -O tmp/de_hdt-ud-dev.conllu https://raw.githubusercontent.com/UniversalDependencies/UD_German-HDT/master/de_hdt-ud-dev.conllu 
 ```
 
 ### Install a virtual environment
