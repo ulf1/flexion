@@ -5608,3 +5608,33 @@ def conllu_to_smor(posfeats: dict) -> List[str]:
             if all(matches):
                 smortags.append(sm)
     return smortags
+
+
+def match_smor_and_conllu(token: dict, analysis: List[str]) -> List[str]:
+    """ Check which SMOR analysis matches Conll-U's morphological features
+    """
+    # abort
+    if token.get("upos") is None:
+        return []
+    if token.get("feats") is None:
+        return []
+
+    # read data from Conll-U token
+    posfeats = {
+        "upos": token.get("upos"),
+        **token.get("feats")
+    }
+
+    # lookup the possible smortags
+    implied_smortags = conllu_to_smor(posfeats)
+
+    # filter the `<+...` tags from analysis
+    smortags = []
+    for s in analysis:
+        idx = s.find('<+')
+        if idx >= 0:
+            # check which SMOR analysis matches the Conll-U features
+            if s[idx:] in implied_smortags:
+                smortags.append(s)
+    # done
+    return smortags
