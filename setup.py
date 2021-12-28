@@ -28,8 +28,12 @@ setuptools.setup(
     author_email='554c46@gmail.com',
     license='Apache License 2.0',
     packages=['flexion'],
-    install_requires=[],
-    # scripts=['scripts/examplescript.py'],
+    install_requires=[
+        'sfst-transduce>=1.0.1,<2'
+    ],
+    scripts=[
+        'scripts/download_transducer.py'
+    ],
     python_requires='>=3.6',
     zip_safe=True
 )
