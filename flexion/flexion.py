@@ -2,7 +2,7 @@ from typing import List
 import os
 import sfst_transduce
 import pathlib
-from .map_smor_conllu import match_smor_and_conllu
+from .map_smor_conllu import (match_smor_and_conllu, get_best_smortag)
 import re
 import copy
 
@@ -23,10 +23,8 @@ def replace(lemma: str, substitute: str, tokenlist: List[dict]) -> List[str]:
             smortags = match_smor_and_conllu(t, fst.analyse(t.get("form")))
             t['smortags'] = smortags
             indicies.append(i)
-            # print(i, t['smortags'])
         tokens2.append(t)
 
-    # 
     # abort
     if len(indicies) == 0:
         return []
@@ -41,20 +39,31 @@ def replace(lemma: str, substitute: str, tokenlist: List[dict]) -> List[str]:
             count[matches[-1]] += 1
     genus = '<Neut>' if count['<Neut>'] >= count['<Fem>'] else '<Fem>'
     genus = '<Masc>' if count['<Masc>'] > count[genus] else genus
-    # print(substitute, genus)
 
     # generate form with SMOR for substitute lemma and overwrite `'form'` field
     for tid in indicies:
         tokens2[tid]["form"] = []
-        # print(len(tokens2[tid]['smortags']))
         for smortag in tokens2[tid].get('smortags'):
-            # print(smortag)
             pos = smortag.find('<+')
             adjusted = re.sub(pattern, genus, smortag[pos:])
-            # print(adjusted)
             newforms = fst.generate(f"{substitute}{adjusted}")
             if len(newforms) > 0:
                 tokens2[tid]["form"].extend(newforms)
+
+    # check genus for articles before the lemma (PronType: Art)
+    for tid in indicies:
+        if tid > 0:
+            t = tokens2[tid - 1]
+            if t.get("feats", {}).get("PronType") == "Art":
+                smortags = match_smor_and_conllu(t, fst.analyse(t.get("form")))
+                if len(smortags) > 0:
+                    adjusted = re.sub(pattern, genus, smortags[0])
+                    newforms = fst.generate(f"{adjusted}")
+                    if len(newforms) > 0:
+                        t['form'] = newforms[0]
+
+    # if the lemma is root of clause sentence (PronType: Rel) the change genus
+
     # done
     return generate_strings(tokens2)
 
@@ -71,8 +80,8 @@ def generate_strings(tokens) -> List[str]:
         ws = True
         if not nextws:
             ws = False
-        if t.get("form") in [
-            ",", ".", "!", "?", ":", ";", '“', '‘', "(", "[", "{"]:
+        if t.get("form") in [",", ".", "!", "?", ":", ";", '“', '‘',
+                             "(", "[", "{"]:
             ws = False
         if ws:
             for i in range(len(sent)):
