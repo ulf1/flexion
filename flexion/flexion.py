@@ -32,7 +32,7 @@ def replace(lemma: str, substitute: str, tokenlist: List[dict]) -> List[str]:
 
     # enumerate all SMOR tags for substitute lemma
     subsitute_smortags = fst.analyse(substitute)
-    pattern = re.compile(r'<Fem>|<Masc|<Neut>')
+    pattern = re.compile(r'<Fem>|<Masc>|<Neut>')
     count = {'<Fem>': 0, '<Masc>': 0, '<Neut>': 0}
     for sm in subsitute_smortags:
         matches = pattern.findall(sm)
