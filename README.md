@@ -11,6 +11,9 @@ Applying declination and conjugation rules to lemmata.
 ## Warning
 Software is **not** production ready and requires more unit testing.
 
+## Bender Rule
+The software was developed for processing German-language texts (lang: de).
+
 ## Installation in another project
 The `flexion` [git repo](http://github.com/ulf/flexion) is available as [PyPi package](https://pypi.org/project/flexion)
 
@@ -63,7 +66,10 @@ source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt --no-cache-dir
 pip install -r requirements-dev.txt --no-cache-dir
+
+# jupyter notebooks
 pip install -r requirements-demo.txt --no-cache-dir
+python -m spacy download de_core_news_lg
 ```
 
 (If your git repo is stored in a folder with whitespaces, then don't use the subfolder `.venv`. Use an absolute path without whitespaces.)
