@@ -18,7 +18,7 @@ def replace(lemma: str, substitute: str, tokenlist: List[dict]) -> List[str]:
     # run SMOR analysis if token is the given lemma
     tokens2 = []
     indicies = []
-    for i, t in enumerate(tokenlist):
+    for i, t in enumerate(copy.deepcopy(tokenlist)):
         if t.get("lemma") == lemma:
             smortags = match_smor_and_conllu(t, fst.analyse(t.get("form")))
             t['smortags'] = smortags
