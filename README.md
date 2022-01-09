@@ -8,13 +8,22 @@
 # flexion
 Applying declination and conjugation rules to lemmata.
 
-## Warning
+## 🤙 Call for Collaborators
+I'm looking for a collaborator with knowledge about (or interest in) German linguistics; in particular syntax & morphology.
+Poeple with limited programming experience are welcome.
+Drop me a message: `hamster` [ät] "bbaw" (dot) 'de'.
+
+## ⚠️ Warning
 Software is **not** production ready and requires more unit testing.
 
-## Bender Rule
+**Known Problems:**
+The software should work for `VERB` and `ADJ`.
+It will fail for the genus of relative pronouns and coreference resolution if the genus of replaced `NOUN` changes.
+
+## ✔️ Bender Rule
 The software was developed for processing German-language texts (lang: de).
 
-## Installation in another project
+## ⚙️ Installation in another project
 The `flexion` [git repo](http://github.com/ulf/flexion) is available as [PyPi package](https://pypi.org/project/flexion)
 
 ```sh
@@ -32,7 +41,8 @@ mkdir tmp
 wget -O tmp/de_hdt-ud-dev.conllu https://raw.githubusercontent.com/UniversalDependencies/UD_German-HDT/master/de_hdt-ud-dev.conllu 
 ```
 
-## Usage
+## 🛠️ Usage
+The `flexion.replace` function expects a sentence formated as [conllu](https://pypi.org/project/conllu/) dictionary.
 
 ```py
 import flexion
@@ -54,6 +64,9 @@ augmentations = flexion.replace(lemma, substitute, dat[5])
 print(augmentations)
 # ['" Diesen Spekulationen liegt eine unseriöse Recherche zugrunde.']
 ```
+
+You can use packages like SpaCy, TranKit or Stanza to parse sentences and transform them to Python dictionary with [CoNLL-U fields](https://universaldependencies.org/format.html) as keys.
+See [this notebook](https://github.com/ulf1/flexion/blob/main/demo/Augment%20Sentences%20with%20flexion%20and%20spacy.ipynb) for examples.
 
 
 ## Appendix
