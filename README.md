@@ -1,4 +1,5 @@
 [![PyPI version](https://badge.fury.io/py/flexion.svg)](https://badge.fury.io/py/flexion)
+[![PyPi downloads](https://img.shields.io/pypi/dm/flexion)](https://img.shields.io/pypi/dm/flexion)
 [![DOI](https://zenodo.org/badge/441439427.svg)](https://zenodo.org/badge/latestdoi/441439427)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/ulf/flexion.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ulf/flexion/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/ulf/flexion.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ulf/flexion/context:python)
